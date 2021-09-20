@@ -10,27 +10,27 @@ const getAbilities = () => {
 }
 
 // Return a list of genders
-const getGenders = () => {
-    const gender = [{ name: "Male" }, { name: "Female" }]
-   createDropdown(gender,"Gender")
-}
+// const getGenders = () => {
+//    const gender = [{ name: "Male" }, { name: "Female" }]
+//    createDropdown(gender,"Gender")
+// }
 
 // Return a list of genders
-const getLegendaries = () => {
-    const legendary = [{ name: "True" },{name:"False"}]
-   createDropdown(legendary,"Legendary")
-}
+// const getLegendaries = () => {
+//    const legendary = [{ name: "True" },{name:"False"}]
+//    createDropdown(legendary,"Legendary")
+// }
 
 // Return a list of natures
-const getNatures = () => {
-    fetch('https://pokeapi.co/api/v2/nature')
-        .then((response) => response.json())        
-        .then((data) => createDropdown(data.results,"Natures"))
-        //.then((obj) => console.log(obj))        
-		.catch((e) => {
-			console.log(e.message);
-		});
-}
+// const getNatures = () => {
+//     fetch('https://pokeapi.co/api/v2/nature')
+//         .then((response) => response.json())        
+//         .then((data) => createDropdown(data.results,"Natures"))
+//         //.then((obj) => console.log(obj))        
+// 		.catch((e) => {
+// 			console.log(e.message);
+// 		});
+// }
 
 // Return a list of types
 const getTypes = () => {
@@ -58,8 +58,8 @@ const createDropdown = (objArray, title) => {
        
 }
 getAbilities()
-//getGenders()
-//getLegendaries()
+// getGenders()
+// getLegendaries()
 //getNatures()
 getTypes()
 
@@ -75,7 +75,7 @@ const render = () => {
 const getPokemonList = () => {
 	fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
         .then((response) => response.json()) 
-        .then((pokemons) => { pokemons.results.forEach((pokemon) => getPokemonObject(pokemon,getAbility(), getNature(), getText(),getType())); })        
+        .then((pokemons) => { pokemons.results.forEach((pokemon) => getPokemonObject(pokemon,getAbility(), getText(),getType())); })        
 		.catch((e) => {
 			console.log(e.message);
 		});
@@ -84,11 +84,70 @@ const getPokemonList = () => {
 //This function create and Append div to the HTML (CARD)
 const renderCards = (obj) => {
 	if (obj) {
-        cards = document.getElementById('pokemon');
-        div = document.createElement('div');
-        div.innerText = obj.name;
-        cards.append(div);
-    createImage(obj.id,cards)
+        // All card container 
+        let cards = document.getElementById('pokemon');
+
+        // Flip card containers 
+        let card = document.createElement('div');
+        let back = document.createElement('div');
+        let content = document.createElement('div');
+        let front = document.createElement('div');
+
+        let pokeName = document.createElement('h2')
+        let stats = document.createElement('ul');
+        let pokeTypes = document.createElement('li');
+        let hp = document.createElement('li')
+        let attack = document.createElement('li')
+        let defence = document.createElement('li')
+        let specialAttack = document.createElement('li')
+        let specialDefence = document.createElement('li')
+        let speed = document.createElement('li')
+
+
+        // pokeSpecies = document.createElement('li')
+        //pokeIsLegendary = document.createElement('li')
+        front.classList.add("front");
+        front.classList.add(obj.types[0].type.name)
+        card.classList.add("card");
+        back.classList.add("back");
+        content.classList.add("content")
+        pokeName.classList.add("pokeName")
+        stats.classList.add("stats");
+        hp.classList.add("stat");
+        attack.classList.add("stat");
+        defence.classList.add("stat");
+        specialAttack.classList.add("stat");
+        specialDefence.classList.add("stat");
+        speed.classList.add("stat");
+
+        pokeName.innerText = capitalizeFirstLetter(obj.name)
+        pokeTypes.innerText = "Type: " + capitalizeFirstLetter(obj.types[0].type.name) 
+        hp.innerText = "HP: " + obj.stats[0].base_stat
+        attack.innerText = "Attack: " + obj.stats[1].base_stat
+        defence.innerText = "Defence: " + obj.stats[2].base_stat
+        specialAttack.innerText = "Special Attack: " + obj.stats[3].base_stat
+        specialDefence.innerText = "Special Defence: " + obj.stats[4].base_stat
+        speed.innerText = "Speed: " + obj.stats[4].base_stat
+
+
+        // pokeIsLegendary = obj.isLeg
+        cards.append(card);
+        card.append(content);
+        card.append(back);
+        content.append(front)
+        front.append(pokeName)
+        front.append(stats)
+        stats.append(pokeTypes)
+        stats.append(hp)
+        stats.append(attack)
+        stats.append(defence)
+        stats.append(specialAttack)
+        stats.append(specialDefence)
+        stats.append(speed)
+
+        front.append(createImage(obj.id))
+
+    // createImage(obj.id,cards)
 	}
 };
 
@@ -98,8 +157,10 @@ function createImage(id, cards){
     container.classList.add('image')
     let image = document.createElement('img')
     image.srcset = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${id}.png`
-    container.append(image);
-    cards.append(container);
+    image.classList.add("pokeImage")
+    return image
+    // container.append(image);
+    // cards.append(container);
 }
 
 //Return search box text
@@ -139,7 +200,7 @@ const getType = () => {
 
 
 // This function takes a pokemon name as argument and fetch and push a single pokemon object to pokemonObjectArray
-const getPokemonObject = (pokemon, ability, nature, text, type) => {    
+const getPokemonObject = (pokemon, ability, text, type) => {    
 	fetch(pokemon.url)
 		.then((response) => response.json())
         .then((data) => {
@@ -174,6 +235,11 @@ const getPokemonObject = (pokemon, ability, nature, text, type) => {
 			console.log(e.message);
 		});
 };
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+  
 
 //On click search button, return pokemons
 search = document.getElementById('showPokemon');
