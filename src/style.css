@@ -10,3 +10,10 @@ p {
 label {
     font-size: 25px;
 }
+
+.btn {
+    margin-left: 60px;
+}
+.choices {
+    margin-left: 20px;
+}
