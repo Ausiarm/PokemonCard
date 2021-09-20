@@ -11,28 +11,25 @@
 			content="width=device-width, initial-scale=1.0"
 		/>
 		<title>pokeCard</title>
+        <link rel="stylesheet" href="styles.css" type="text/css" />
 	</head>
 	<body>
+        <div class="header">
+            <!-- <img src="../images/pokeball.png" alt="pokeball" width="25px" height="25px"> -->
+            <img src="../images/pokemon_header.png" alt="pokemon" width="200px">
+            <p>Gotta catch em' all!</p>
+        </div>
 		<input id="search-box" />
 		<select
 			name="Abilities"
 			class=""
 			id="Abilities"
 		></select>
-		<select name="Gender" class="" id="Gender"></select>
-		<select
-			name="Legendary"
-			class=""
-			id="Legendary"
-		></select>
-		<select
-			name="Natures"
-			class=""
-			id="Natures"
-		></select>
 		<select name="Types" class="" id="Types"></select>
-		<button id="showPokemon">Search</button>
+		<button id="showPokemon"><img src="../images/pokeball.png" alt="pokeball" width="25px" height="25px"></button>
 		<br />
+        <br />
+        <a href="indexQuiz.html">Take the quiz!</a>
 		<br />
 		<div id="pokemon"></div>
 		<script src="fetch.js"></script>
