@@ -1,27 +1,4 @@
-// function renderCards(){
-//     return new Promise((resolve, reject) =>{
-        
-//     })
-// }
-// function checkLength(string){
-//     if(string.length >5){
-//         console.log(string + "...")
-
-//     }else{
-//         throw new Error("string length must be greater than 5")
-//     }
-// }
-// capitalise("new")
-// .then((data)=>{return(data)})
-// //.then((value)=>console.log(value +"***"))
-// .then(checkLength)
-// .catch(e=>{console.log("error:" +e.message)})
-// .finally(console.log("Promise execution completed"))
-
-
-
-
-
+// Return a list of abilities
 const getAbilities = () => {
     fetch('https://pokeapi.co/api/v2/ability')
         .then((response) => response.json())        
@@ -31,8 +8,9 @@ const getAbilities = () => {
 			console.log(e.message);
 		});
 }
-const getNature = () => {
-    fetch('https://pokeapi.co/api/v2/ability')
+// Return a list of natures
+const getNatures = () => {
+    fetch('https://pokeapi.co/api/v2/nature')
         .then((response) => response.json())        
         .then((data) => createDropdown(data.results,"Natures"))
         //.then((obj) => console.log(obj))        
@@ -40,6 +18,8 @@ const getNature = () => {
 			console.log(e.message);
 		});
 }
+
+// Return a list of types
 const getTypes = () => {
     fetch('https://pokeapi.co/api/v2/type')
         .then((response) => response.json())        
@@ -50,8 +30,8 @@ const getTypes = () => {
 		});
 }
 
+//Generete a dropdown with a list of options
 const createDropdown = (objArray, title) => {
-    console.log(title)
     option = document.createElement('option');
         option.value = "";
         option.innerText = title;
@@ -65,69 +45,112 @@ const createDropdown = (objArray, title) => {
        
 }
 getAbilities()
-getNature()
+//getNatures()
 getTypes()
 
-//Return a list of all pokemons
+
+//Clear list and render list of pokemons with details 
+const render = () => {
+    let pokemonContainer = document.querySelector('#pokemon')
+    pokemonContainer.innerText = "";
+    getPokemonList()
+}
+
+//Return a list of all pokemons, name and url only
 const getPokemonList = () => {
-	fetch('https://pokeapi.co/api/v2/pokemon')
-        .then((response) => response.json())
-        
-        .then((data) => { return getPokemonNames(data.results); })
-        .then((obj) => console.log(obj))
-        //.then((names) => { return names.map((name)=> getPokemonObject(name))     })
-        .then((obj) => console.log(obj))
-		.catch((e) => {
-			console.log(e.message);
-		});
-};
-
-const renderCards = (objArray) => {
-	if (objArray && objArray.length > 0) {
-		cards = document.getElementById('pokemon');
-		createCard(objArray);
-	}
-};
-
-//Return search box text
-const getSearchText = () => {
-	text = document.getElementById('search-box');
-	return text.value;
-};
-
-//Return selected category
-const getCategory = () => {
-	cat = document.getElementById('Select');
-	return cat.value;
-};
-
-//Takes the array pokemon object and Return an array of pokemon names 
-const getPokemonNames = (objArray) => {
-	return objArray.map((el) => el.name);
-};
-
-// This fucntion takes a pokemon name as argument and return a single pokemon object
-const getPokemonObject = (name) => {
-	fetch('https://pokeapi.co/api/v2/pokemon/'+ name)
-		.then((response) => response.json())
-		.then((data) => {return data})
+	fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
+        .then((response) => response.json()) 
+        .then((pokemons) => { pokemons.results.forEach((pokemon) => getPokemonObject(pokemon,getAbility(), getNature(), getText(),getType())); })        
 		.catch((e) => {
 			console.log(e.message);
 		});
 };
 
 //This function create and Append div to the HTML (CARD)
-const createCard = (objArray) => {
-	objArray.forEach((el) => {
-		div = document.createElement('div');
-		div.innerText = el.name;
-		cards.append(div);
-	});
+const renderCards = (obj) => {
+	if (obj) {
+        cards = document.getElementById('pokemon');
+        div = document.createElement('div');
+        div.innerText = obj.name;
+        cards.append(div);
+    createImage(obj.id,cards)
+	}
 };
 
-const test = () => {
-    console.log(getPokemonList())
+//This function create and Append img to the HTML (CARD)
+function createImage(id, cards){
+    let container = document.createElement('div')
+    container.classList.add('image')
+    let image = document.createElement('img')
+    image.srcset = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${id}.png`
+    container.append(image);
+    cards.append(container);
 }
-//On click search button, return values
+
+//Return search box text
+const getText = () => {
+	text = document.getElementById('search-box');
+	return text.value;
+};
+
+//Return selected Ability
+const getAbility = () => {
+	cat = document.getElementById('Abilities');
+	return cat.value;
+};
+
+//Return selected Nature
+const getNature = () => {
+	cat = document.getElementById('Natures');
+	return cat.value;
+};
+//Return selected Type
+const getType = () => {
+	cat = document.getElementById('Types');
+	return cat.value;
+};
+
+
+// This function takes a pokemon name as argument and fetch and push a single pokemon object to pokemonObjectArray
+const getPokemonObject = (pokemon, ability, nature, text, type) => {    
+	fetch(pokemon.url)
+		.then((response) => response.json())
+        .then((data) => {
+            //Render card if no args
+            if (!ability && !text && !type) { renderCards(0); }
+
+            //Render card if ability only
+            if (ability && ability == data.abilities[0].ability.name && !text && !type) { renderCards(data); console.log(1); };
+
+            //Render card if ability & text
+            if (ability && ability == data.abilities[0].ability.name && text && data.name.includes(text) && !type) { renderCards(data); console.log(2); };
+
+            //Render card if ability & text & type
+            if (ability && ability == data.abilities[0].ability.name && text && data.name.includes(text) && type && type == data.types[0].type.name) { renderCards(data); console.log(3); };
+
+            //Render card if ability & type
+            if (ability && ability == data.abilities[0].ability.name && !text && type && type == data.types[0].type.name) { renderCards(data); console.log(4); };
+
+
+            //Render card if text only
+            if (!ability && text && data.name.includes(text) && !type) { renderCards(data); console.log(5); };
+
+            //Render card if text & type
+            if (!ability && text && data.name.includes(text) && type && type == data.types[0].type.name) { renderCards(data); console.log(6); };
+
+            //Render card if type only
+            if (type && type == data.types[0].type.name && !ability && !text) { renderCards(data); console.log(7); };
+            
+            
+        })
+		.catch((e) => {
+			console.log(e.message);
+		});
+};
+
+
+
+//On click search button, return pokemons
 search = document.getElementById('showPokemon');
-search.addEventListener('click', getPokemonList);
+search.addEventListener('click', render);
+
