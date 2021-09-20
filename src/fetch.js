@@ -8,6 +8,19 @@ const getAbilities = () => {
 			console.log(e.message);
 		});
 }
+
+// Return a list of genders
+const getGenders = () => {
+    const gender = [{ name: "Male" }, { name: "Female" }]
+   createDropdown(gender,"Gender")
+}
+
+// Return a list of genders
+const getLegendaries = () => {
+    const legendary = [{ name: "True" },{name:"False"}]
+   createDropdown(legendary,"Legendary")
+}
+
 // Return a list of natures
 const getNatures = () => {
     fetch('https://pokeapi.co/api/v2/nature')
@@ -45,6 +58,8 @@ const createDropdown = (objArray, title) => {
        
 }
 getAbilities()
+//getGenders()
+//getLegendaries()
 //getNatures()
 getTypes()
 
@@ -98,12 +113,24 @@ const getAbility = () => {
 	cat = document.getElementById('Abilities');
 	return cat.value;
 };
+//Return selected gender
+const getGender = () => {
+	cat = document.getElementById('Gender');
+	return cat.value;
+};
+//Return selected Legendary
+const getLegendary = () => {
+	cat = document.getElementById('Legendaries');
+	return cat.value;
+};
 
 //Return selected Nature
 const getNature = () => {
 	cat = document.getElementById('Natures');
 	return cat.value;
 };
+
+
 //Return selected Type
 const getType = () => {
 	cat = document.getElementById('Types');
@@ -117,7 +144,7 @@ const getPokemonObject = (pokemon, ability, nature, text, type) => {
 		.then((response) => response.json())
         .then((data) => {
             //Render card if no args
-            if (!ability && !text && !type) { renderCards(0); }
+            if (!ability && !text && !type) { renderCards(data); console.log(data)}
 
             //Render card if ability only
             if (ability && ability == data.abilities[0].ability.name && !text && !type) { renderCards(data); console.log(1); };
@@ -147,8 +174,6 @@ const getPokemonObject = (pokemon, ability, nature, text, type) => {
 			console.log(e.message);
 		});
 };
-
-
 
 //On click search button, return pokemons
 search = document.getElementById('showPokemon');
