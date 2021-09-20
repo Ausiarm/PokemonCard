@@ -1,0 +1,12 @@
+body {
+    background-image: url(../img/pika.jpg);
+}
+
+p {
+    font-size: 30px ;
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+label {
+    font-size: 25px;
+}
