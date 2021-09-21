@@ -244,7 +244,6 @@ function alertUser() {
     alert("You are a x pokemon Trainer!") 
 }
 
-
 //On click search button, return pokemons
 search = document.getElementById('showPokemon');
 search.addEventListener('click', render);
