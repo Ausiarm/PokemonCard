@@ -9,29 +9,6 @@ const getAbilities = () => {
 		});
 }
 
-// Return a list of genders
-// const getGenders = () => {
-//    const gender = [{ name: "Male" }, { name: "Female" }]
-//    createDropdown(gender,"Gender")
-// }
-
-// Return a list of genders
-// const getLegendaries = () => {
-//    const legendary = [{ name: "True" },{name:"False"}]
-//    createDropdown(legendary,"Legendary")
-// }
-
-// Return a list of natures
-// const getNatures = () => {
-//     fetch('https://pokeapi.co/api/v2/nature')
-//         .then((response) => response.json())        
-//         .then((data) => createDropdown(data.results,"Natures"))
-//         //.then((obj) => console.log(obj))        
-// 		.catch((e) => {
-// 			console.log(e.message);
-// 		});
-// }
-
 // Return a list of types
 const getTypes = () => {
     fetch('https://pokeapi.co/api/v2/type')
@@ -58,9 +35,6 @@ const createDropdown = (objArray, title) => {
        
 }
 getAbilities()
-// getGenders()
-// getLegendaries()
-//getNatures()
 getTypes()
 
 
@@ -174,23 +148,6 @@ const getAbility = () => {
 	cat = document.getElementById('Abilities');
 	return cat.value;
 };
-//Return selected gender
-const getGender = () => {
-	cat = document.getElementById('Gender');
-	return cat.value;
-};
-//Return selected Legendary
-const getLegendary = () => {
-	cat = document.getElementById('Legendaries');
-	return cat.value;
-};
-
-//Return selected Nature
-const getNature = () => {
-	cat = document.getElementById('Natures');
-	return cat.value;
-};
-
 
 //Return selected Type
 const getType = () => {
@@ -244,4 +201,5 @@ function capitalizeFirstLetter(string) {
 //On click search button, return pokemons
 search = document.getElementById('showPokemon');
 search.addEventListener('click', render);
+
 
