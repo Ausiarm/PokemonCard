@@ -41,7 +41,7 @@ body {
   }
 
 .content, .back {
-    background-image: url(../images/back_card.jpeg);
+    background-image: url(images/back_card.jpeg);
     background-size: 300px 350px;
 }
 
