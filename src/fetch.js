@@ -239,10 +239,6 @@ const getPokemonObject = (pokemon, ability, text, type) => {
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
-  
-function alertUser() {
-    alert("You are a x pokemon Trainer!") 
-}
 
 //On click search button, return pokemons
 search = document.getElementById('showPokemon');
