@@ -3,7 +3,15 @@ const getType = (id) => {
     fetch('https://pokeapi.co/api/v2/type/'+ `${id}`)
         .then((response) => response.json())        
       .then((data) => {
-        alert("You are a "+ data.name + " pokemon type trainer!")
+        document.getElementById("answer").innerText = data.name.toUpperCase();
+        elem = document.getElementById("message")
+        elem.classList.add("show")
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        document.getElementById("close").addEventListener("click", () => {
+          el = document.getElementById("message")
+          el.style.display = "none"
+          location.reload();
+        })
         })        
 		.catch((e) => {
 			console.log(e.message);

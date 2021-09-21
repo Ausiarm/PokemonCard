@@ -1,262 +1,524 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="styles.css" type="text/css" />
+	<head>
+		<meta charset="UTF-8" />
+		<link
+			rel="stylesheet"
+			href="styles.css"
+			type="text/css"
+		/>
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz</title>
-    <link rel="stylesheet" href="style.css" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge"
+		/>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Quiz</title>
+		<link rel="stylesheet" href="style.css" />
 
-    <!-- google font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300&display=swap" rel="stylesheet">
-    <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		<!-- google font -->
+		<link
+			rel="preconnect"
+			href="https://fonts.googleapis.com"
+		/>
+		<link
+			rel="preconnect"
+			href="https://fonts.gstatic.com"
+			crossorigin
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- Latest compiled and minified CSS -->
+		<link
+			rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		/>
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<!-- Popper JS -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</head>
-<body>
-    <header>
-        <div class="header px-5 pt-5">
-            <!-- <img src="../images/pokeball.png" alt="pokeball" width="25px" height="25px"> -->
-            <img src="images/pokemon_header.png" alt="pokemon" width="200px">
-            <p>Answer honestly and find out which pokemon suits you most!</p>
-            <a href="index.html">Return to PokeSearch</a>
-        </div>
-    </header>
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<header>
+        <div id="message"
+			class=" col-9 p-5 ml-5 mt-5 position-absolute
+				alert alert-warning
+				fade
+                hidden
+				
+			"
+			role="alert"
+		>
+			You are a <strong id="answer"></strong> type trainer!
+			<button id="close"
+				type="button"
+				class=" ml-5  btn-close"
+				data-bs-dismiss="alert"
+				aria-label="Close"
+			>Close</button>
+		</div>
+			<div class="header px-5 pt-5">
+				<!-- <img src="../images/pokeball.png" alt="pokeball" width="25px" height="25px"> -->
+				<img
+					src="images/pokemon_header.png"
+					alt="pokemon"
+					width="200px"
+				/>
+				<p>
+					Answer honestly and find out which
+					pokemon suits you most!
+				</p>
+				<a href="index.html"
+					>Return to PokeSearch</a
+				>
+			</div>
+		</header>
+		
 
-    <main>
-        <div class="quiz-wrapper px-5 py-2">
-            <div class="quiz-title">
-                <p>1. Are you a morning person?</p>
-                <div class="choices">
-                    <input type="radio" id="yes" name="choice1" value="Yes" checked>
-                    <label for="html">Yes</label><br>
-                    <input type="radio" id="no" name="choice1" value="No">
-                    <label for="css">No</label><br>
-                </div>
-            </div>
-        </div>
+		<main>
+			<div class="quiz-wrapper px-5 py-2">
+				<div class="quiz-title">
+					<p>1. Are you a morning person?</p>
+					<div class="choices">
+						<input
+							type="radio"
+							id="yes"
+							name="choice1"
+							value="Yes"
+							checked
+						/>
+						<label for="html">Yes</label><br />
+						<input
+							type="radio"
+							id="no"
+							name="choice1"
+							value="No"
+						/>
+						<label for="css">No</label><br />
+					</div>
+				</div>
+			</div>
 
-        <div class="quiz-wrapper px-5 py-2">
-            <div class="quiz-title">
-                <p>2. Are you a night person?</p>
-                <div class="choices">
-                    <input type="radio" id="yes" name="choice2" value="Yes" checked>
-                    <label for="html">Yes</label><br>
-                    <input type="radio" id="no" name="choice2" value="No">
-                    <label for="css">No</label><br>
-                </div>
-            </div>
-        </div>
+			<div class="quiz-wrapper px-5 py-2">
+				<div class="quiz-title">
+					<p>2. Are you a night person?</p>
+					<div class="choices">
+						<input
+							type="radio"
+							id="yes"
+							name="choice2"
+							value="Yes"
+							checked
+						/>
+						<label for="html">Yes</label><br />
+						<input
+							type="radio"
+							id="no"
+							name="choice2"
+							value="No"
+						/>
+						<label for="css">No</label><br />
+					</div>
+				</div>
+			</div>
 
-        <div class="quiz-wrapper px-5 py-2">
-            <div class="quiz-title">
-                <p>3. Do you like to go on a camp?</p>
-                <div class="choices">
-                    <input type="radio" id="yes" name="choice3" value="Yes" checked>
-                    <label for="html">Yes</label><br>
-                    <input type="radio" id="no" name="choice3" value="No">
-                    <label for="css">No</label><br>
-                </div>
-            </div>
-        </div>
+			<div class="quiz-wrapper px-5 py-2">
+				<div class="quiz-title">
+					<p>3. Do you like to go on a camp?</p>
+					<div class="choices">
+						<input
+							type="radio"
+							id="yes"
+							name="choice3"
+							value="Yes"
+							checked
+						/>
+						<label for="html">Yes</label><br />
+						<input
+							type="radio"
+							id="no"
+							name="choice3"
+							value="No"
+						/>
+						<label for="css">No</label><br />
+					</div>
+				</div>
+			</div>
 
-        <div class="quiz-wrapper px-5 py-2">
-            <div class="quiz-title">
-                <p>4. Are are married?</p>
-                <div class="choices">
-                    <input type="radio" id="yes" name="choice4" value="Yes" checked>
-                    <label for="html">Yes</label><br>
-                    <input type="radio" id="no" name="choice4" value="No">
-                    <label for="css">No</label><br>
-                </div>
-            </div>
-        </div>
+			<div class="quiz-wrapper px-5 py-2">
+				<div class="quiz-title">
+					<p>4. Are are married?</p>
+					<div class="choices">
+						<input
+							type="radio"
+							id="yes"
+							name="choice4"
+							value="Yes"
+							checked
+						/>
+						<label for="html">Yes</label><br />
+						<input
+							type="radio"
+							id="no"
+							name="choice4"
+							value="No"
+						/>
+						<label for="css">No</label><br />
+					</div>
+				</div>
+			</div>
 
-        <div class="quiz-wrapper px-5 py-2">
-            <div class="quiz-title">
-                <p>5. Are you a male?</p>
-                <div class="choices">
-                    <input type="radio" id="yes" name="choice5" value="Yes" checked>
-                    <label for="html">Yes</label><br>
-                    <input type="radio" id="no" name="choice5" value="No">
-                    <label for="css">No</label><br>
-                </div>
-            </div>
-        </div>
+			<div class="quiz-wrapper px-5 py-2">
+				<div class="quiz-title">
+					<p>5. Are you a male?</p>
+					<div class="choices">
+						<input
+							type="radio"
+							id="yes"
+							name="choice5"
+							value="Yes"
+							checked
+						/>
+						<label for="html">Yes</label><br />
+						<input
+							type="radio"
+							id="no"
+							name="choice5"
+							value="No"
+						/>
+						<label for="css">No</label><br />
+					</div>
+				</div>
+			</div>
 
-        <div class="quiz-wrapper px-5 py-2">
-            <div class="quiz-title">
-                <p>6. Are you female?</p>
-                <div class="choices">
-                    <input type="radio" id="yes" name="choice6" value="Yes" checked>
-                    <label for="html">Yes</label><br>
-                    <input type="radio" id="no" name="choice6" value="No">
-                    <label for="css">No</label><br>
-                </div>
-            </div>
-        </div>
+			<div class="quiz-wrapper px-5 py-2">
+				<div class="quiz-title">
+					<p>6. Are you female?</p>
+					<div class="choices">
+						<input
+							type="radio"
+							id="yes"
+							name="choice6"
+							value="Yes"
+							checked
+						/>
+						<label for="html">Yes</label><br />
+						<input
+							type="radio"
+							id="no"
+							name="choice6"
+							value="No"
+						/>
+						<label for="css">No</label><br />
+					</div>
+				</div>
+			</div>
 
-        <div class="quiz-wrapper px-5 py-2">
-            <div class="quiz-title">
-                <p>7. Are you from Australia?</p>
-                <div class="choices">
-                    <input type="radio" id="yes" name="choice7" value="Yes" checked>
-                    <label for="html">Yes</label><br>
-                    <input type="radio" id="no" name="choice7" value="No">
-                    <label for="css">No</label><br>
-                </div>
-            </div>
-        </div>
+			<div class="quiz-wrapper px-5 py-2">
+				<div class="quiz-title">
+					<p>7. Are you from Australia?</p>
+					<div class="choices">
+						<input
+							type="radio"
+							id="yes"
+							name="choice7"
+							value="Yes"
+							checked
+						/>
+						<label for="html">Yes</label><br />
+						<input
+							type="radio"
+							id="no"
+							name="choice7"
+							value="No"
+						/>
+						<label for="css">No</label><br />
+					</div>
+				</div>
+			</div>
 
-        <div class="quiz-wrapper px-5 py-2">
-            <div class="quiz-title">
-                <p>8. Are you from Japan?</p>
-                <div class="choices">
-                    <input type="radio" id="yes" name="choice8" value="Yes" checked>
-                    <label for="html">Yes</label><br>
-                    <input type="radio" id="no" name="choice8" value="No">
-                    <label for="css">No</label><br>
-                </div>
-            </div>
-        </div>
+			<div class="quiz-wrapper px-5 py-2">
+				<div class="quiz-title">
+					<p>8. Are you from Japan?</p>
+					<div class="choices">
+						<input
+							type="radio"
+							id="yes"
+							name="choice8"
+							value="Yes"
+							checked
+						/>
+						<label for="html">Yes</label><br />
+						<input
+							type="radio"
+							id="no"
+							name="choice8"
+							value="No"
+						/>
+						<label for="css">No</label><br />
+					</div>
+				</div>
+			</div>
 
-        <div class="quiz-wrapper px-5 py-2">
-            <div class="quiz-title">
-                <p>9. Are you over 18 years old?</p>
-                <div class="choices">
-                    <input type="radio" id="yes" name="choice9" value="Yes" checked>
-                    <label for="html">Yes</label><br>
-                    <input type="radio" id="no" name="choice9" value="No">
-                    <label for="css">No</label><br>
-                </div>
-            </div>
-        </div>
+			<div class="quiz-wrapper px-5 py-2">
+				<div class="quiz-title">
+					<p>9. Are you over 18 years old?</p>
+					<div class="choices">
+						<input
+							type="radio"
+							id="yes"
+							name="choice9"
+							value="Yes"
+							checked
+						/>
+						<label for="html">Yes</label><br />
+						<input
+							type="radio"
+							id="no"
+							name="choice9"
+							value="No"
+						/>
+						<label for="css">No</label><br />
+					</div>
+				</div>
+			</div>
 
-        <div class="quiz-wrapper px-5 py-2">
-            <div class="quiz-title">
-                <p>10. Are you a smoker?</p>
-                <div class="choices">
-                    <input type="radio" id="yes" name="choice10" value="Yes" checked>
-                    <label for="html">Yes</label><br>
-                    <input type="radio" id="no" name="choice10" value="No">
-                    <label for="css">No</label><br>
-                </div>
-            </div>
-        </div>
+			<div class="quiz-wrapper px-5 py-2">
+				<div class="quiz-title">
+					<p>10. Are you a smoker?</p>
+					<div class="choices">
+						<input
+							type="radio"
+							id="yes"
+							name="choice10"
+							value="Yes"
+							checked
+						/>
+						<label for="html">Yes</label><br />
+						<input
+							type="radio"
+							id="no"
+							name="choice10"
+							value="No"
+						/>
+						<label for="css">No</label><br />
+					</div>
+				</div>
+			</div>
 
-        <div class="quiz-wrapper px-5 py-2">
-            <div class="quiz-title">
-                <p>11. Are you an indoor person?</p>
-                <div class="choices">
-                    <input type="radio" id="yes" name="choice11" value="Yes" checked>
-                    <label for="html">Yes</label><br>
-                    <input type="radio" id="no" name="choice11" value="No">
-                    <label for="css">No</label><br>
-                </div>
-            </div>
-        </div>
+			<div class="quiz-wrapper px-5 py-2">
+				<div class="quiz-title">
+					<p>11. Are you an indoor person?</p>
+					<div class="choices">
+						<input
+							type="radio"
+							id="yes"
+							name="choice11"
+							value="Yes"
+							checked
+						/>
+						<label for="html">Yes</label><br />
+						<input
+							type="radio"
+							id="no"
+							name="choice11"
+							value="No"
+						/>
+						<label for="css">No</label><br />
+					</div>
+				</div>
+			</div>
 
-        <div class="quiz-wrapper px-5 py-2">
-            <div class="quiz-title">
-                <p>12. Are you single?</p>
-                <div class="choices">
-                    <input type="radio" id="yes" name="choice12" value="Yes" checked>
-                    <label for="html">Yes</label><br>
-                    <input type="radio" id="no" name="choice12" value="No">
-                    <label for="css">No</label><br>
-                </div>
-            </div>
-        </div>
+			<div class="quiz-wrapper px-5 py-2">
+				<div class="quiz-title">
+					<p>12. Are you single?</p>
+					<div class="choices">
+						<input
+							type="radio"
+							id="yes"
+							name="choice12"
+							value="Yes"
+							checked
+						/>
+						<label for="html">Yes</label><br />
+						<input
+							type="radio"
+							id="no"
+							name="choice12"
+							value="No"
+						/>
+						<label for="css">No</label><br />
+					</div>
+				</div>
+			</div>
 
-        <div class="quiz-wrapper px-5 py-2">
-            <div class="quiz-title">
-                <p>13. Are you an animal lover?</p>
-                <div class="choices" checked>
-                    <input type="radio" id="yes" name="choice13" value="Yes">
-                    <label for="html">Yes</label><br>
-                    <input type="radio" id="no" name="choice13" value="No">
-                    <label for="css">No</label><br>
-                </div>
-            </div>
-        </div>
+			<div class="quiz-wrapper px-5 py-2">
+				<div class="quiz-title">
+					<p>13. Are you an animal lover?</p>
+					<div class="choices" checked>
+						<input
+							type="radio"
+							id="yes"
+							name="choice13"
+							value="Yes"
+						/>
+						<label for="html">Yes</label><br />
+						<input
+							type="radio"
+							id="no"
+							name="choice13"
+							value="No"
+						/>
+						<label for="css">No</label><br />
+					</div>
+				</div>
+			</div>
 
-        <div class="quiz-wrapper px-5 py-2">
-            <div class="quiz-title">
-                <p>14. Are you good at sports?</p>
-                <div class="choices">
-                    <input type="radio" id="yes" name="choice14" value="Yes" checked>
-                    <label for="html">Yes</label><br>
-                    <input type="radio" id="no" name="choice14" value="No">
-                    <label for="css">No</label><br>
-                </div>
-            </div>
-        </div>
+			<div class="quiz-wrapper px-5 py-2">
+				<div class="quiz-title">
+					<p>14. Are you good at sports?</p>
+					<div class="choices">
+						<input
+							type="radio"
+							id="yes"
+							name="choice14"
+							value="Yes"
+							checked
+						/>
+						<label for="html">Yes</label><br />
+						<input
+							type="radio"
+							id="no"
+							name="choice14"
+							value="No"
+						/>
+						<label for="css">No</label><br />
+					</div>
+				</div>
+			</div>
 
-        <div class="quiz-wrapper px-5 py-2">
-            <div class="quiz-title">
-                <p>15. Have you been hit by a lightning?</p>
-                <div class="choices">
-                    <input type="radio" id="yes" name="choice15" value="Yes" checked>
-                    <label for="html">Yes</label><br>
-                    <input type="radio" id="no" name="choice15" value="No">
-                    <label for="css">No</label><br>
-                </div>
-            </div>
-        </div>
+			<div class="quiz-wrapper px-5 py-2">
+				<div class="quiz-title">
+					<p>
+						15. Have you been hit by a
+						lightning?
+					</p>
+					<div class="choices">
+						<input
+							type="radio"
+							id="yes"
+							name="choice15"
+							value="Yes"
+							checked
+						/>
+						<label for="html">Yes</label><br />
+						<input
+							type="radio"
+							id="no"
+							name="choice15"
+							value="No"
+						/>
+						<label for="css">No</label><br />
+					</div>
+				</div>
+			</div>
 
-        <div class="quiz-wrapper px-5 py-2">
-            <div class="quiz-title">
-                <p>16. Have you ever driven a car with a 200km/h?</p>
-                <div class="choices">
-                    <input type="radio" id="yes" name="choice16" value="Yes" checked>
-                    <label for="html">Yes</label><br>
-                    <input type="radio" id="no" name="choice16" value="No">
-                    <label for="css">No</label><br>
-                </div>
-            </div>
-        </div>
+			<div class="quiz-wrapper px-5 py-2">
+				<div class="quiz-title">
+					<p>
+						16. Have you ever driven a car with
+						a 200km/h?
+					</p>
+					<div class="choices">
+						<input
+							type="radio"
+							id="yes"
+							name="choice16"
+							value="Yes"
+							checked
+						/>
+						<label for="html">Yes</label><br />
+						<input
+							type="radio"
+							id="no"
+							name="choice16"
+							value="No"
+						/>
+						<label for="css">No</label><br />
+					</div>
+				</div>
+			</div>
 
-        <div class="quiz-wrapper px-5 py-2">
-            <div class="quiz-title">
-                <p>17. Have you ever seen Michel Jackson in person?</p>
-                <div class="choices">
-                    <input type="radio" id="yes" name="choice17" value="Yes" checked>
-                    <label for="html">Yes</label><br>
-                    <input type="radio" id="no" name="choice17" value="No">
-                    <label for="css">No</label><br>
-                </div>
-            </div>
-        </div>
+			<div class="quiz-wrapper px-5 py-2">
+				<div class="quiz-title">
+					<p>
+						17. Have you ever seen Michel
+						Jackson in person?
+					</p>
+					<div class="choices">
+						<input
+							type="radio"
+							id="yes"
+							name="choice17"
+							value="Yes"
+							checked
+						/>
+						<label for="html">Yes</label><br />
+						<input
+							type="radio"
+							id="no"
+							name="choice17"
+							value="No"
+						/>
+						<label for="css">No</label><br />
+					</div>
+				</div>
+			</div>
 
-        <div class="quiz-wrapper px-5 py-2">
-            <div class="quiz-title">
-                <p>18. Have you ever got a superpower?</p>
-                <div class="choices">
-                    <input type="radio" id="yes" name="choice18" value="Yes" checked>
-                    <label for="html">Yes</label><br>
-                    <input type="radio" id="no" name="choice18" value="No">
-                    <label for="css">No</label><br>
-                </div>
-                
-            </div>
-        </div>
-        <br>
-        <br>
-        <button id="submit" class="btn btn-primary btn-lg mb-5">Submit</button>
-        <!-- <input type="submit" value="Submit"> -->
-    </main>
-    <script src="quiz.js"></script>
-</body>
+			<div class="quiz-wrapper px-5 py-2">
+				<div class="quiz-title">
+					<p>
+						18. Have you ever got a superpower?
+					</p>
+					<div class="choices">
+						<input
+							type="radio"
+							id="yes"
+							name="choice18"
+							value="Yes"
+							checked
+						/>
+						<label for="html">Yes</label><br />
+						<input
+							type="radio"
+							id="no"
+							name="choice18"
+							value="No"
+						/>
+						<label for="css">No</label><br />
+					</div>
+				</div>
+			</div>
+			<br />
+			<br />
+			<button
+				id="submit"
+				class="btn btn-primary btn-lg mb-5"
+			>
+				Submit
+			</button>
+			<!-- <input type="submit" value="Submit"> -->
+		</main>
+		<script src="quiz.js"></script>
+	</body>
 </html>
